@@ -45,7 +45,6 @@ Create a model who predict a Spotify songs popularity based on songs characteris
 ### 1.5. Solution
 
 In this project, a regression model will be used to predict the popularity index of a Spotify songs.
-<br>
 
 ## 2.0. The Dataset
 
@@ -85,3 +84,257 @@ The dataset has 170653 rows and 19 columns.
   - **artists** (List of artists mentioned)
   - **release_date** (Date of release mostly in yyyy-mm-dd format, however precision of date may vary)
   - **name** (Name of the song)
+
+### 2.4. Exploratory Data Analysis
+
+<puting data_analisys here>
+
+## 3.0. Feature Engineering
+
+### 3.1. Hypothesis map
+
+The map below help us to decide which variables we need in order to validate the hypotheses.
+
+<putting hypotesis map>
+
+### 3.2. Hypothesis Creation
+
+| #    | Audio Feature Object                          |
+| ---- | --------------------------------------------- |
+| 1.   | Popularity occur with high `acousticness`.    |
+| 2.   | Popularity occur with high `danceability`.    |
+| 3.   | Popularity occur with 80% of `liveness`.      |
+| 4.   | Popularity occur with `loudness` above -10.   |
+| 5.   | Popularity occur with low `energy`.           |
+| 6.   | Popularity occur with low `speechiness`.      |
+| 7.   | Popularity occur with high `valence`.         |
+| 8.   | Popularity occur with `key` equal 2.          |
+| 9.   | Popularity occur with `mode` equal 1.         |
+| 10.  | Popularity occur with high `tempo`.           |
+| 11.  | Popularity occur with low `instrumentalness`. |
+
+| #    | Track                                     |
+| ---- | ----------------------------------------- |
+| 1.   | Popularity occur with `explicit` equal 1. |
+
+| #    | TIME                                       |
+| ---- | ------------------------------------------ |
+| 1.   | Popularity occur with high `duration_min`. |
+
+## 4.0. Univariate Analysis
+
+### 4.1. Target Variable
+
+<img01>
+
+The songs popularity are concentrated at zero, most of the songs do not have good popularity score.
+
+The target variable has a multimodal distribution.
+
+<img02>
+
+Songs with 0 score are from 1920s or maybe older, it has anything to do with the popularity measurement system, this means all songs related to an artist are non popular.
+
+### 4.2. Numerical Variables Distribution
+
+<img03>
+
+Some observations:
+
+* `loudness` has negative values and left skew
+* `liveness`, `speechiness` and `duration_min` is right skew
+* `loudness` has negative skew
+* `tempo` has a unimodal distribution
+* `acousticness` is a bimodal dataset
+
+### 4.3. Bivariate Analysis
+
+The bivariate analysis consists of the independent variable analysis with respect to the target variable. 
+
+#### H1. Popularity occur with high `acousticness`.
+* FALSE
+*  HIGH RELEVANCE
+<img05>
+#### H2. Popularity occur with high `danceability`.
+* TRUE
+* HIGH RELEVANCE
+<img06>
+#### H3. Popularity occur with 80% of `liveness`.
+* FALSE
+* LOW RELEVANCE
+* <img07>
+#### H4. Popularity occour with `loudness` above -10.
+* TRUE
+* HIGH RELEVANCE
+<img08>
+#### H5. Popularity occur with low `energy`.
+* FALSE
+* HIGH RELEVANCE
+*<img09>
+#### H6. Popularity occur with low `speechiness`.
+* TRUE
+* LOW RELEVANCE
+<img10>
+#### H7. Popularity occur with high `valence`.
+* FALSE
+* HIGH RELEVANCE
+<img11>
+#### H8. Popularity occour with `key` equal 2.
+* DEPEND
+* LOW RELEVANCE
+<img12>
+#### H9. Popularity occur with `mode` equal 1.
+* FALSE
+* HIGH RELEVANCE
+<img13>
+#### H10. Popularity occur with high `tempo`.
+* TRUE
+* LOW RELEVANCE
+<img14>
+#### H11. Popularity occur with low `instrumentalness`.
+* TRUE
+* LOW RELEVANCE
+<img15>
+#### H12. Popularity occur with `explicit` equal 1.
+* TRUE
+* LOW RELEVANCE
+<img16>
+### H13. Popularity occur with high `duration_min`.
+* FALSE
+* LOW RELEVANCE
+<img17>
+
+### 4.4. Multivariate Analysis
+
+The main goal of the multivariate analysis is to check how variables are related.
+
+<img18>
+
+## 5.0. Data Preparation
+
+There are mainly three types of data preparation:
+
+1. **Normalization**: A scaling technique which values are shifted and rescaled so that they end up ranging between 0 and 1.
+2. **Standardization**: Scaling technique where the values are centered around the mean with a unit standard deviation.
+
+### 5.1. Standardization
+
+None of the numerical variables have a normal distribution, therefore the Standardization technique will not be applied.
+
+### 5.2. Rescaling
+
+<img04>
+
+The boxplot above shows the variables with a high influence of outliers. Two rescaling techniques will be applied: the Min-Max Scaler and the Robust Scaler.
+
+The Min-Max Scaler is applied in non-Gaussian distributions. However, it is susceptible to outliers, that is, if the feature has a high outlier influence, than the Min-Max Scaler will tend to result in distorted numbers due to the outliers. That happens because it uses the maximal and minimal values (range) to rescale the numbers.
+
+The Robust Scaler is also applied to non-Gaussian distributions, and performs better for variables with outliers, because it scales the data with the range of the first quartile (25th quantile) and the third quartile (75th quantile) of the IQR (Interquartile Range).
+
+## 6.0. Feature Selection
+
+The first step of feature selection was to select the features for the machine learning training: 
+
+```
+['valence', 'year', 'acousticness', 'danceability','energy', 'explicit', 'instrumentalness', 'key', 'liveness', 'loudness', 'mode', 'popularity','speechiness', 'tempo', 'duration_min']
+```
+
+The second step,  drop the target variable ['popularity'] in order to allow the model to be trained.
+
+The third step was to apply Boruta to determine the most relevant features:
+```
+['year',  'acousticness',  'danceability',  'energy',  'instrumentalness',  'liveness',  'loudness', 'speechiness', 'tempo', 'duration_min']
+```
+
+## 7.0 Machine Learning Modelling 
+
+In order to solve the task 3 regression models will be used:
+
+* Linear Regression
+* Random Forest Regression
+* XGBoost Regressor
+
+### 7.1. Single Performance
+
+<single performance>
+
+The metric chosen is RSME (root mean square error) and Random Forest Regression has the best results.
+
+### 7.2 Real Performance
+
+The technique to validating our models is called Cross-Validation, it is a resampling procedure used to evaluate machine learning models.  The goal of cross-validation is to test the model's ability to predict new data that was not used in estimating in, in order to flag problems like overfitting. Here are the results:
+
+<real_performance>
+
+XGBoost Regressor has the best RSME, so based on the business context and in order to better accomplish the project goals, the chosen model to perform the fine tuning is XGBoost.
+
+## 8.0. Fine Tuning
+
+The hyperparameter fine-tuning is performed in order to improve the model performance in comparison to the model with default hyperparameters.
+
+There are two ways to perform hyperparameter fine-tuning: through grid search or through random search. In grid search all predefined hyperparameters are combined and evaluated through cross-validation. It is the best way to find the best hyperparameters combinations, however it takes a long time to be completed. In random search, the predefined hyperparameters are randomly combined and then evaluated through cross-validation. It may not find the best optimal combination, however it is much faster than the grid search and it is largely applied.
+
+In this project, the chosen technique is GridesearchCV, the results are:
+
+```
+{'colsample_bytree': 0.9,
+ 'learning_rate': 0.03,
+ 'max_depth': 5,
+ 'min_child_weight': 4,
+ 'n_estimators': 1500,
+ 'objective': 'reg:squarederror',
+ 'silent': 1,
+ 'subsample': 0.7}
+```
+
+### 8.1. Final Model
+
+<final_model>
+
+<final_model_cv>
+
+It was observed that was a significant decrease in RSME.
+
+## 9.0. Machine Learning Performance
+
+<img19>
+
+Some comments related to the machine learning performance.
+
+### 9.1 Popularity x Prediction
+
+<img20>
+
+the graphics shows that the prediction and `popularity` have a very close line, which means the prediction have the same shape of `popularity` line. The shadows represents a variance of several predictions.
+
+### 9.2. Error Rate
+
+<img21>
+
+The error rate graphics shows the error rate of the predictions at each time period. There is a large error rate in the early years, this due to the amount of old songs with very low popularity.
+
+<img24>
+
+Checking the subsequent years it is notice a few predictions below one, this values represent and underestimated prediction, the values above one represents overestimated predictions.
+
+### 9.3. Error Distribution
+
+<img22>
+
+The error distribution almost follows a normal distribution.
+
+### 9.4. Scatterplot Error
+
+<img23>
+
+The zero values `popularity` brought some negative error rate. The points seems well fit in a horizontal tube which means that there's a few variation in the error. If the points formed any other shape (e.g opening/closing cone or an arch), this would mean that the errors follows a trend and we would need to review our model.
+
+## 10.0. Next Steps
+
+* Experiment with other Machine Learning algorithms to improve business performance.
+* Experiment with selecting other features to see how much the RMSE is impacted.
+* Experiment with other hyperparameter fine-tuning strategies to see how much the RMSE is impacted.
+* Improve bot or application to user interaction.
+
+ 
+
