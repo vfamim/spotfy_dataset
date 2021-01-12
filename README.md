@@ -36,7 +36,7 @@ Spotify operates under a freemium business model (basic services are free, while
 
 The project was developed based on CRISP-DS (Cross-Industry Standard Process - Data Science) project management method.
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/CRISP-DM_Process_Diagram.png/1024px-CRISP-DM_Process_Diagram.png" alt="CRISP" style="zoom:30%;" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/CRISP-DM_Process_Diagram.png/1024px-CRISP-DM_Process_Diagram.png" alt="CRISP" style="zoom:20%;" />
 
 ### 1.4. The Goal of Project
 
@@ -95,7 +95,7 @@ The dataset has 170653 rows and 19 columns.
 
 The map below help us to decide which variables we need in order to validate the hypotheses.
 
-<putting hypotesis map>
+![mindmap](https://github.com/vfamim/spotfy_dataset/blob/master/img/mindset.JPG)
 
 ### 3.2. Hypothesis Creation
 
@@ -125,19 +125,19 @@ The map below help us to decide which variables we need in order to validate the
 
 ### 4.1. Target Variable
 
-<img01>
+![tv](https://github.com/vfamim/spotfy_dataset/blob/master/img/img01.png)
 
 The songs popularity are concentrated at zero, most of the songs do not have good popularity score.
 
 The target variable has a multimodal distribution.
 
-<img02>
+![img2](https://github.com/vfamim/spotfy_dataset/blob/master/img/img02.png)
 
 Songs with 0 score are from 1920s or maybe older, it has anything to do with the popularity measurement system, this means all songs related to an artist are non popular.
 
 ### 4.2. Numerical Variables Distribution
 
-<img03>
+![img3](https://github.com/vfamim/spotfy_dataset/blob/master/img/img03.png)
 
 Some observations:
 
@@ -153,62 +153,87 @@ The bivariate analysis consists of the independent variable analysis with respec
 
 #### H1. Popularity occur with high `acousticness`.
 * FALSE
-*  HIGH RELEVANCE
-<img05>
+* HIGH RELEVANCE
+
+![img5](https://github.com/vfamim/spotfy_dataset/blob/master/img/img05.png)
+
 #### H2. Popularity occur with high `danceability`.
 * TRUE
 * HIGH RELEVANCE
-<img06>
+
+![img6](https://github.com/vfamim/spotfy_dataset/blob/master/img/img06.png)
+
 #### H3. Popularity occur with 80% of `liveness`.
 * FALSE
 * LOW RELEVANCE
-* <img07>
+
+![img7](https://github.com/vfamim/spotfy_dataset/blob/master/img/img07.png)
+
 #### H4. Popularity occour with `loudness` above -10.
 * TRUE
 * HIGH RELEVANCE
-<img08>
+
+![img8](https://github.com/vfamim/spotfy_dataset/blob/master/img/img08.png)
+
 #### H5. Popularity occur with low `energy`.
 * FALSE
 * HIGH RELEVANCE
-*<img09>
+
+![img9](https://github.com/vfamim/spotfy_dataset/blob/master/img/img09.png)
+
 #### H6. Popularity occur with low `speechiness`.
 * TRUE
 * LOW RELEVANCE
-<img10>
+
+![img10](https://github.com/vfamim/spotfy_dataset/blob/master/img/img10.png)
+
 #### H7. Popularity occur with high `valence`.
 * FALSE
 * HIGH RELEVANCE
-<img11>
+
+![img11](https://github.com/vfamim/spotfy_dataset/blob/master/img/img11.png)
+
 #### H8. Popularity occour with `key` equal 2.
 * DEPEND
 * LOW RELEVANCE
-<img12>
+
+![img12](https://github.com/vfamim/spotfy_dataset/blob/master/img/img12.png)
+
 #### H9. Popularity occur with `mode` equal 1.
 * FALSE
 * HIGH RELEVANCE
-<img13>
+
+![img13](https://github.com/vfamim/spotfy_dataset/blob/master/img/img13.png)
+
 #### H10. Popularity occur with high `tempo`.
 * TRUE
 * LOW RELEVANCE
-<img14>
+
+![img14](https://github.com/vfamim/spotfy_dataset/blob/master/img/img14.png)
+
 #### H11. Popularity occur with low `instrumentalness`.
 * TRUE
 * LOW RELEVANCE
-<img15>
+
+![img15](https://github.com/vfamim/spotfy_dataset/blob/master/img/img15.png)
+
 #### H12. Popularity occur with `explicit` equal 1.
 * TRUE
 * LOW RELEVANCE
-<img16>
+
+![img16](https://github.com/vfamim/spotfy_dataset/blob/master/img/img16.png)
+
 ### H13. Popularity occur with high `duration_min`.
 * FALSE
 * LOW RELEVANCE
-<img17>
+
+![img17](https://github.com/vfamim/spotfy_dataset/blob/master/img/img17.png)
 
 ### 4.4. Multivariate Analysis
 
 The main goal of the multivariate analysis is to check how variables are related.
 
-<img18>
+![img18](https://github.com/vfamim/spotfy_dataset/blob/master/img/img18.png)
 
 ## 5.0. Data Preparation
 
@@ -223,7 +248,7 @@ None of the numerical variables have a normal distribution, therefore the Standa
 
 ### 5.2. Rescaling
 
-<img04>
+![img4](https://github.com/vfamim/spotfy_dataset/blob/master/img/img04.png)
 
 The boxplot above shows the variables with a high influence of outliers. Two rescaling techniques will be applied: the Min-Max Scaler and the Robust Scaler.
 
@@ -256,7 +281,7 @@ In order to solve the task 3 regression models will be used:
 
 ### 7.1. Single Performance
 
-<single performance>
+![single performance](https://github.com/vfamim/spotfy_dataset/blob/master/img/single_performance.JPG)
 
 The metric chosen is RSME (root mean square error) and Random Forest Regression has the best results.
 
@@ -264,7 +289,7 @@ The metric chosen is RSME (root mean square error) and Random Forest Regression 
 
 The technique to validating our models is called Cross-Validation, it is a resampling procedure used to evaluate machine learning models.  The goal of cross-validation is to test the model's ability to predict new data that was not used in estimating in, in order to flag problems like overfitting. Here are the results:
 
-<real_performance>
+![real_performance](https://github.com/vfamim/spotfy_dataset/blob/master/img/real_performance.JPG)
 
 XGBoost Regressor has the best RSME, so based on the business context and in order to better accomplish the project goals, the chosen model to perform the fine tuning is XGBoost.
 
@@ -289,43 +314,43 @@ In this project, the chosen technique is GridesearchCV, the results are:
 
 ### 8.1. Final Model
 
-<final_model>
+![final_model](https://github.com/vfamim/spotfy_dataset/blob/master/img/final_model.JPG)
 
-<final_model_cv>
+![final_model_cv](https://github.com/vfamim/spotfy_dataset/blob/master/img/final_model_cv.JPG)
 
 It was observed that was a significant decrease in RSME.
 
 ## 9.0. Machine Learning Performance
 
-<img19>
+![img19](https://github.com/vfamim/spotfy_dataset/blob/master/img/img19.png)
 
 Some comments related to the machine learning performance.
 
 ### 9.1 Popularity x Prediction
 
-<img20>
+![img20](https://github.com/vfamim/spotfy_dataset/blob/master/img/img20.png)
 
 the graphics shows that the prediction and `popularity` have a very close line, which means the prediction have the same shape of `popularity` line. The shadows represents a variance of several predictions.
 
 ### 9.2. Error Rate
 
-<img21>
+![img21](https://github.com/vfamim/spotfy_dataset/blob/master/img/img21.png)
 
 The error rate graphics shows the error rate of the predictions at each time period. There is a large error rate in the early years, this due to the amount of old songs with very low popularity.
 
-<img24>
+![img24](https://github.com/vfamim/spotfy_dataset/blob/master/img/img24.png)
 
 Checking the subsequent years it is notice a few predictions below one, this values represent and underestimated prediction, the values above one represents overestimated predictions.
 
 ### 9.3. Error Distribution
 
-<img22>
+![img22](https://github.com/vfamim/spotfy_dataset/blob/master/img/img22.png)
 
 The error distribution almost follows a normal distribution.
 
 ### 9.4. Scatterplot Error
 
-<img23>
+![img23](https://github.com/vfamim/spotfy_dataset/blob/master/img/img23.png)
 
 The zero values `popularity` brought some negative error rate. The points seems well fit in a horizontal tube which means that there's a few variation in the error. If the points formed any other shape (e.g opening/closing cone or an arch), this would mean that the errors follows a trend and we would need to review our model.
 
