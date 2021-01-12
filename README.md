@@ -4,6 +4,7 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
+* [1.1. What is Spotify?](#what-is-spotify?) 
 - [1. The Business Challenge](#1-the-business-challenge)
 - [2. The Dataset](#2-the-dataset)
 - [3. Feature Engineering and Variables Filtering](#3-feature-engineering-and-variables-filtering)
