@@ -1,4 +1,4 @@
-# Spotify: Predicting Popularity of Songs
+# Spotify: Predicting Songs Popularity
 
 ![spotify](https://www.scdn.co/i/_global/open-graph-default.png)
 
