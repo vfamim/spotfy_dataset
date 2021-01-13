@@ -48,7 +48,7 @@ This project is part of the Kaggle community
 
 ### 1.1. What is Spotify?
 
-Sportify is a digital music, podcast and (recently) videos streaming that gives access to millions of songs and other content from artists all over the world.
+Spotify is a digital music, podcast and (recently) videos streaming that gives access to millions of songs and other content from artists all over the world.
 
 ### 1.2. Spotify Business Model
 
